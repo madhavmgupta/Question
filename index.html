@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a1{      
+            margin-left: 150px;
+            background-color:blue;
+            height:50px;
+            width: 100px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<script>
+    function check(){
+       if(document.getElementById("x1").checked){
+            document.getElementById("x2").innerHTML="All the best for the exam.";
+            document.getElementById("x2").style.color="red";
+            document.getElementById("b1").style.visibility="visible";
+       }
+       else{
+        document.getElementById("b1").style.visibility="hidden";
+       }    
+    }
+</script>
+<body>
+    <p style="text-align: center; font-size: 40px;"><b>Instructions on how to complete <br>the
+        Multiple Choice Questions during an examination </b></p>
+        <div>
+            <p style="margin-top: 50px; font-size: 25px;"><b>Note: There are variations to the instructions per module exam which are not
+                included in these general instructions</b></p>
+                <ol type="1" style="font-size: 20px;">
+                    <li>Answers to all questions are to be recorded on the multiple-choice form, either
+                        in the format A-E or True/False. </li>
+                    <li>Mark one box only to indicate the answer you consider correct for each
+                        question. </li>  
+                    <li>Fill up your personal details carefully. </li>
+                    <li>All questions are compulsory.</li>  
+                    <li>You are allowed to submit only once, make sure that you have correctly the questions before submission.</li>
+                    <li>Make sure you clicked on finish button to successfully complete the test.</li>
+                    <li>Form will be active for half an hours. For session-I 10.05AM to 10.35PM and for session-II 12.05PM to 12:35PM.</li>
+                    <li>Attempted: <div class="a1"></div>
+                    <br>Not Attempted: <div class="a1" style="background-color: cyan;"></div></li>
+                </ol>
+        </div>
+        <h2>All the best for the test</h2>
+        <input type="checkbox" id="x1" onclick="check()">You have read all the above instructions carefully.
+        <br>
+        <p id="x2"></p>
+        <a href="question.html">
+        <input type="button" id="b1" value="Test" style="height:50px; width:100px; background-color: rgb(246, 255, 0); margin-left: 100px; border-radius: 20px;">
+        </a>
+
+        <script>
+            document.getElementById("b1").style.visibility="hidden";
+        </script>
+</body>
+</html>

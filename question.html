@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-top: 0px;
+            margin-left: 0px;
+            padding-left: 50px;
+            height:700px;
+            background-image:radial-gradient(yellow,red);
+        }
+        input{
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px 2px ;
+            background-color: aqua;
+        }
+        input:hover{
+            background-color: blueviolet;
+        }
+        
+        .a1x{
+            font-size: 30px;
+            height: 50px;
+            width:100px;
+            margin-left: 50px;
+         
+        }
+        #s{
+            font-size: 30px;
+        }
+        .p1{
+            margin-top: 50px;
+            font-size: 30px;
+            height: 50px;
+            width:200px;
+            margin-left: 50px;
+      
+        }
+        #x{
+            width:400px;
+        }
+    </style>
+</head>
+<script>
+    
+    
+        var h=60;
+        var a=0;
+        var z=setInterval(function(){
+        document.getElementById("x").innerHTML="Time Left "+a+":"+h;
+        h--;
+            if(h<10){
+                document.getElementById("x").style.backgroundColor="red";
+            }
+        if(h==-1){
+            a--;
+            h=60;
+        }
+        if(a==-1){
+            clearInterval(z);
+        }
+    },1000);
+        var b=["PM of India", "2+4 = ?", "3x6 = ?"];
+        var opt1=["NaMo","16","180"];
+        var opt2=[" Rahul Gandhi","50","33"];
+        var opt3=["rajnath singh","6","22"];
+        var opt4=["Both A and B","7","16"];
+        var ans=[1,3,4];
+        var index;
+        var c=[0,0,0],sum=0,arr1;
+
+        function display(v){
+            index=v;
+            document.getElementById("s").innerHTML="Questions: "+b[v]+"<br><input type='radio' name='a' id='ax' value='1' style='margin-top:50px' >"+opt1[v]+"<br><input type='radio' name='a' id='bx' value='2' style='margin-top:30px' style='margin-left:50px'>"+opt2[v]+"<br><input type='radio' name='a' id='cx' value='3' style='margin-top:30px'>"+opt3[v]+"<br><input type='radio' name='a' id='dx' value='4' style='margin-top:30px'>"+opt4[v]+"<br><input type='button' value='next' onclick='next()' id='x11' class='p1'>"+"<input type='button' value='previous' id='x12' onclick='previous()' class='p1'>"+"<input type='button' value='Submit' onclick='answer()' id='a11'  class='p1'>"+"<input type='button' value='Finish' onclick='finish()' id='a12'  class='p1'>";
+        }
+        function next(){
+            if(index>=2){
+                document.getElementById("x11").innerHTML="";
+            }
+            else{
+            display(index+1);
+            document.getElementById("s1").innerHTML="";
+        }
+        }
+        function previous(){
+            if(index-1==-1){
+                display(3);
+            }
+            display(index-1);
+            document.getElementById("s1").innerHTML="";
+        }
+        function answer(){
+            
+            var x;
+            
+            if (document.getElementById("ax").checked){
+                x=document.getElementById("ax").value;
+            }
+            else if(document.getElementById("bx").checked){
+                x=document.getElementById("bx").value;
+            }
+            else if(document.getElementById("cx").checked){
+                x=document.getElementById("cx").value;
+            }
+            else{
+                x=document.getElementById("dx").value;
+            }
+            if(x==ans[index]){
+                c[index]=1; 
+                document.getElementById("s1").innerHTML="Your answer has been submitted successfully."
+            }
+            else{
+                c[index]=0;
+                document.getElementById("s1").innerHTML="Your answer has been submitted successfully."
+            }
+            document.getElementById(index).style.background="blue";
+            
+        }
+        function finish(){
+            for(var i=0;i<c.length;i++){
+                sum=sum+c[i];
+            }
+            document.getElementById("s2").innerHTML="Your Score is : "+sum+"/3";
+            clearInterval(z);
+            document.getElementById("x").innerHTML="Time left "+0+":"+0;
+            document.getElementById("a1").style.visibility="hidden";
+            document.getElementById("a2").style.visibility="hidden";
+            document.getElementById("a3").style.visibility="hidden";
+            document.getElementById("ax").style.visibility="hidden";
+            document.getElementById("bx").style.visibility="hidden";
+            document.getElementById("cx").style.visibility="hidden";
+            document.getElementById("dx").style.visibility="hidden";
+            document.getElementById("x11").style.visibility="hidden";
+            document.getElementById("x12").style.visibility="hidden";
+            document.getElementById("a11").style.visibility="hidden";
+            document.getElementById("s").innerHTML="";
+            document.getElementById("s1").innerHTML="";
+
+        }
+</script>
+<body>
+   
+    <p id="x" style="font-size: 50px;"></p>
+    <input type="button" id="0" onclick="display(0)" value="Q1" class="a1x">
+    <input type="button" id="1" onclick="display(1)" value="Q2"  class="a1x">
+    <input type="button" id="2" onclick="display(2)" value="Q3" class="a1x">
+    <p id="s"></p>
+    <p id="s1" style="font-size: 30px" ></p>
+    <p id="s2" style="font-size: 30px" ></p>
+    
+    
+</body>
+</html>
